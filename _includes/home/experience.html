@@ -1,0 +1,24 @@
+<section id="experience" class="home-section">
+  <h2>Experience</h2>
+  <div class="card-list">
+    {% for job in site.data.experience %}
+      <article class="card experience-card">
+        <div class="experience-card__meta">
+          <p class="experience-card__org">{{ job.org }}</p>
+          <p>{{ job.location }}</p>
+          <p>{{ job.dates }}</p>
+        </div>
+        <div class="experience-card__body">
+          <h3>{{ job.title }}</h3>
+          {% if job.summary %}
+            <p>{{ job.summary }}</p>
+          {% else %}
+            <ul>
+              {% for bullet in job.bullets %}<li>{{ bullet }}</li>{% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>

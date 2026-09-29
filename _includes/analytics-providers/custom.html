@@ -1,0 +1,16 @@
+<!-- start custom analytics snippet -->
+<script>
+  /* Record clicks on PDFs, outbound links, and email as GoatCounter events. */
+  document.querySelectorAll('a[href]').forEach(function (a) {
+    var url = new URL(a.href, location.href), name = null;
+    if (url.protocol === 'mailto:') name = 'email';
+    else if (/\.pdf$/i.test(url.pathname)) name = 'pdf: ' + url.pathname.split('/').pop();
+    else if (url.host !== location.host) name = 'out: ' + url.host + url.pathname.replace(/\/$/, '');
+    if (!name) return;
+    a.dataset.goatcounterClick = name;
+    a.dataset.goatcounterTitle = a.textContent.trim() || name;
+  });
+</script>
+<script data-goatcounter="https://kennethghkim.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- end custom analytics snippet -->

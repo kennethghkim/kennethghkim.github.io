@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+{% include base_path %}
+
+<div id="main" role="main" class="project-detail">
+  <article class="project-page" itemscope itemtype="http://schema.org/CreativeWork">
+    <header class="card project-hero">
+      <p class="project-hero__eyebrow">Project</p>
+      <h1 class="project-hero__title" itemprop="headline">{{ page.title }}</h1>
+      {% if page.context or page.period %}
+        <p class="project-hero__meta">{{ page.context }}{% if page.context and page.period %} · {% endif %}{{ page.period }}</p>
+      {% endif %}
+      {% if page.summary %}<p class="project-hero__summary" itemprop="description">{{ page.summary }}</p>{% endif %}
+      <div class="card-actions">
+        <a class="btn" href="{{ base_path }}/#projects">Back to Projects</a>
+        {% for link in page.links %}<a class="btn btn--inverse" href="{{ link.url }}">{{ link.label }}</a>{% endfor %}
+      </div>
+    </header>
+
+    {% if page.role %}
+      <section class="card project-role"><h2>What I Did</h2><ul>{% for item in page.role %}<li>{{ item }}</li>{% endfor %}</ul></section>
+    {% endif %}
+
+    <section class="card page__content project-body" itemprop="text">
+      {{ content }}
+    </section>
+  </article>
+</div>

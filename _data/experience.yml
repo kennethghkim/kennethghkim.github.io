@@ -1,0 +1,43 @@
+# bullets: same text as the resume. Keep in sync.
+# summary: one-sentence version shown on the home page instead of the bullets.
+
+- org: "ColorInfoTech Co., Ltd."
+  summary: "Maintained account and service data for 197 clients of a multifunction printer leasing company, prepared usage-based invoices verified against each contract's terms, and reconciled billed amounts against payments each billing cycle, escalating receivables past standard collection terms to the Business Support Manager for client follow-up and collection."
+  location: "Suwon, South Korea"
+  title: "Business Support Intern"
+  dates: "May 2026 – Aug 2026"
+  bullets:
+    - "Maintained customer account and service data for 197 clients in the internal service system of a multifunction printer leasing company, enabling billing, collections, engineer dispatch, and client inquiry handling."
+    - "Prepared and issued usage-based invoices for each client account, verifying charges against its contract terms."
+    - "Reconciled billed amounts against incoming payments each monthly, quarterly, or semiannual cycle, escalating receivables past standard collection terms to the Business Support Manager for client follow-up and collection."
+    - "Prioritized ad-hoc dispatch for 3 field engineers during call surges based on fault severity, urgency, travel routes, revenue impact, and spare-parts stock, publishing assignments in the service system."
+
+- org: "Coupang Fulfillment Service Ltd."
+  summary: "Replaced memory-based tracking with a shared Excel log of inspections, repairs, and inventory used to prioritize work, drafted daily written reports for the Outbound Operations Manager, and performed daily 5S and safety inspections across a 1.4M-sq-ft fulfillment center."
+  location: "Hwaseong, South Korea"
+  title: "5S Associate, Outbound Operations"
+  dates: "Dec 2024 – Jul 2025"
+  bullets:
+    - "Performed daily 5S and safety inspections across a 1.4M-sq-ft fulfillment center, installing and restoring visual controls, and troubleshooting and repairing equipment and machinery."
+    - "Replaced memory-based tracking with a shared Excel inspection, repair, and inventory log to prioritize tasks."
+    - "Drafted daily written reports on inspections and repairs for submission to the Outbound Operations Manager."
+
+- org: "Republic of Korea Army"
+  summary: "Conducted DMZ surveillance and security operations, coordinated rapid-response operations and communicated urgent updates to command, and led a squad of 12+ soldiers through daily assignments."
+  location: "Yanggu, South Korea"
+  title: "Sergeant, 2nd Battalion, 66th Brigade, 21st Infantry Division"
+  dates: "May 2023 – Nov 2024"
+  bullets:
+    - "Conducted DMZ surveillance and security operations, maintaining situational awareness along the border."
+    - "Coordinated rapid-response operations under pressure and communicated urgent updates to command."
+    - "Led a squad of 12+ soldiers, directing daily assignments and sustaining discipline and operational readiness."
+
+- org: "Fort Worth Christian International High School Investing Club"
+  summary: "Founded and led a high school investing club of up to 40 members, running weekly market research and analysis sessions, mock investment competitions, and technical analysis workshops for beginners that grew active membership by 25%."
+  location: "Yangju, South Korea"
+  title: "Founder and President"
+  dates: "Mar 2020 – Dec 2021"
+  bullets:
+    - "Founded and led an investing club of up to 40 members, instructing weekly market research and analysis sessions."
+    - "Facilitated mock investment competitions to encourage members to gain practical experience and build confidence."
+    - "Organized educational workshops on technical analysis, utilizing PowerPoint visualizations for accessible market concepts for beginners, driving a 25% increase in active membership over time."

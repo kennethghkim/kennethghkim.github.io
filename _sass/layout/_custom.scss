@@ -1,0 +1,413 @@
+/* ==========================================================================
+   PORTFOLIO CUSTOMIZATIONS
+   Section and card structure for the one-page home and project pages.
+   Colors and type come from the active theme (air) variables.
+   ========================================================================== */
+
+$card-bg          : $background-lighter;
+$card-border      : rgba($text, 0.08);
+$section-rule     : rgba($text, 0.12);
+$accent           : $dark-primary-color;   // darker than $primary-color for text contrast
+$accent-soft      : rgba($primary-color, 0.1);
+$muted-text       : mix($background, $text, 30%);
+
+/* Sidebar
+   ========================================================================== */
+
+/* bio is split on " | " into one paragraph per line */
+.author__bio {
+  margin: 0 0 0.3em;
+
+  @include breakpoint($large) {
+    margin: 0 0 0.3em;
+  }
+}
+
+.author__content .author__bio:last-child {
+  @include breakpoint($large) {
+    margin-bottom: 20px;
+  }
+}
+
+/* location stays visible on every screen size */
+.sidebar .author__desktop {
+  display: block;
+}
+
+/* show the links directly on small screens instead of behind a button */
+@media screen and (max-width: #{$large - 1px}) {
+  .author__urls-wrapper {
+    display: block;
+    margin-top: 0.75em;
+  }
+
+  .author__urls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25em 1.25em;
+    position: static;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    z-index: auto;
+
+    &:before,
+    &:after {
+      display: none;
+    }
+
+    a {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Home sections
+   ========================================================================== */
+
+.home-section {
+  /* the masthead is fixed, so leave room when jumping to a section */
+  scroll-margin-top: calc(#{$masthead-height} + 1.5em);
+  padding-bottom: 2.25em;
+  margin-bottom: 2.25em;
+  border-bottom: 1px solid $section-rule;
+
+  &:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  > h2 {
+    margin-top: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+    font-size: $type-size-3;
+  }
+}
+
+/* Cards
+   ========================================================================== */
+
+.card {
+  background: $card-bg;
+  border: 1px solid $card-border;
+  border-radius: 8px;
+  padding: 1.25em 1.5em;
+
+  h2,
+  h3 {
+    margin-top: 0;
+    border-bottom: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.card-list {
+  display: grid;
+  gap: 1em;
+}
+
+.card__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25em 1em;
+
+  /* keep the period at the top right; a long title wraps inside its own column */
+  @include breakpoint($medium) {
+    flex-wrap: nowrap;
+
+    .card__title { flex: 1 1 auto; min-width: 0; }
+    .card__period { flex: 0 0 auto; white-space: nowrap; }
+  }
+}
+
+.card__title {
+  margin: 0;
+  font-size: $type-size-4;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* .card raises the context above the theme's `.page__content p { font-size: 1em }` */
+.card__period,
+.card .card__context {
+  color: $muted-text;
+  font-size: $type-size-6;
+}
+
+.card__context {
+  margin: 0.25em 0 0;
+}
+
+.card__summary {
+  margin: 0.75em 0;
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: 1em;
+
+  .btn {
+    margin: 0;
+    padding: 0.45em 1em;
+    border: 1px solid $accent;
+    border-radius: 6px;
+    background: $accent;
+    color: #fff;
+    font-size: $type-size-6;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      background: $darker-primary-color;
+      border-color: $darker-primary-color;
+    }
+  }
+
+  .btn--inverse {
+    background: transparent;
+    color: $accent;
+
+    &:hover {
+      background: $accent-soft;
+      color: $darker-primary-color;
+    }
+  }
+}
+
+/* Experience
+   ========================================================================== */
+
+.experience-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+
+  @include breakpoint($medium) {
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 1.5em;
+  }
+}
+
+.experience-card__meta {
+  font-size: $type-size-6;
+  color: $muted-text;
+
+  p {
+    margin: 0 0 0.2em;
+  }
+
+  @include breakpoint($medium) {
+    padding-right: 1.5em;
+    border-right: 1px solid $card-border;
+  }
+}
+
+.experience-card__org {
+  color: $text;
+  font-weight: 700;
+}
+
+.experience-card__body {
+  h3 {
+    margin: 0 0 0.5em;
+    font-size: $type-size-4;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.2em;
+  }
+
+  li {
+    margin-bottom: 0.35em;
+  }
+}
+
+/* Courses
+   ========================================================================== */
+
+.course-list {
+  display: grid;
+  gap: 0.5em;
+}
+
+.course-item {
+  padding: 0.6em 1em;
+  border: 1px solid $card-border;
+  border-radius: 6px;
+  background: $card-bg;
+  font-size: $type-size-6;
+  font-weight: 600;
+
+  summary {
+    cursor: pointer;
+    color: $accent;
+  }
+
+  p {
+    margin: 0.5em 0 0;
+    font-weight: 400;
+  }
+}
+
+/* Project detail page (no sidebar)
+   ========================================================================== */
+
+.project-detail {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.project-page {
+  display: grid;
+  gap: 1.25em;
+
+  /* #main already pads the sides on phones, matching the home page */
+  @include breakpoint($medium) {
+    padding: 0 1em;
+  }
+
+  /* grid items default to min-width: auto; let wide diagrams scroll inside their card */
+  > * {
+    min-width: 0;
+  }
+
+  h2 {
+    margin-top: 0;
+    border-bottom: 0;
+    font-size: $type-size-4;
+  }
+}
+
+.project-hero__eyebrow {
+  margin: 0 0 0.25em;
+  color: $accent;
+  font-size: $type-size-6;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-hero__title {
+  margin: 0;
+  font-size: $type-size-2;
+  line-height: 1.2;
+}
+
+.project-hero__meta {
+  margin: 0.4em 0 0;
+  color: $muted-text;
+  font-size: $type-size-6;
+}
+
+.project-hero__summary {
+  margin: 0.75em 0 0;
+}
+
+.project-role h2 {
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid $section-rule;
+}
+
+/* Project body: STAR sections, diagrams, screenshots
+   ========================================================================== */
+
+.project-body {
+  h2 {
+    margin-top: 1.6em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid $section-rule;
+  }
+
+  > h2:first-of-type {
+    margin-top: 0;
+  }
+
+  /* the theme sets tables at $type-size-6, well below the body text */
+  table {
+    font-size: 0.875em;
+  }
+
+  /* the theme paints thead with the dark border color but leaves the text dark */
+  thead th {
+    color: #fff;
+  }
+
+  /* Mermaid diagrams render into the <pre> that held their source */
+  pre:has(> code.language-mermaid) {
+    padding: 1em;
+    background: #fff;
+    border: 1px solid $card-border;
+    border-radius: 8px;
+    text-align: center;
+
+    /* the diagram renders inside <code>; let it use the full width */
+    > code {
+      display: block;
+      width: 100%;
+      background: transparent;
+    }
+
+    /* on phones keep the text readable and scroll sideways instead of shrinking */
+    @media screen and (max-width: #{$medium - 1px}) {
+      overflow-x: auto;
+      text-align: left;
+
+      svg {
+        min-width: 720px;
+      }
+    }
+  }
+}
+
+/* notes, sources, and credits; .project-body raises it above the theme's paragraph size */
+.project-body .project-note {
+  color: $muted-text;
+  font-size: $type-size-6;
+}
+
+/* one screenshot per row, so the English labels on them stay readable */
+.project-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75em;
+
+  figure {
+    margin: 0;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    border: 1px solid $card-border;
+    border-radius: 6px;
+  }
+
+  figcaption {
+    margin-top: 0.4em;
+    color: $muted-text;
+    font-size: $type-size-6;
+  }
+}

@@ -1,0 +1,15 @@
+# The following is the order of the links in the header of the website.
+# The home page is a single scrolling page, so most links point to its sections.
+
+main:
+  - title: "Projects"
+    url: /#projects
+
+  - title: "Experience"
+    url: /#experience
+
+  - title: "Courses"
+    url: /#courses
+
+  - title: "Resume"
+    url: /files/Kenneth_Kim_Resume.pdf
