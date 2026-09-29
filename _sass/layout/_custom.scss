@@ -1,0 +1,775 @@
+/* ==========================================================================
+   PORTFOLIO CUSTOMIZATIONS
+   Section and card structure for the one-page home and project pages.
+   Colors and type come from the active theme (air) variables.
+   ========================================================================== */
+
+$card-bg          : $background-lighter;
+$card-border      : rgba($text, 0.08);
+$section-rule     : rgba($text, 0.12);
+$accent           : $dark-primary-color;   // darker than $primary-color for text contrast
+$accent-soft      : rgba($primary-color, 0.1);
+$muted-text       : mix($background, $text, 30%);
+
+/* Sidebar
+   ========================================================================== */
+
+/* bio is split on " | " into one paragraph per line */
+.author__bio {
+  margin: 0 0 0.3em;
+
+  @include breakpoint($large) {
+    margin: 0 0 0.3em;
+  }
+}
+
+.author__content .author__bio:last-child {
+  @include breakpoint($large) {
+    margin-bottom: 20px;
+  }
+}
+
+/* location stays visible on every screen size */
+.sidebar .author__desktop {
+  display: block;
+}
+
+/* show the links directly on small screens instead of behind a button */
+@media screen and (max-width: #{$large - 1px}) {
+  .author__urls-wrapper {
+    display: block;
+    margin-top: 0.75em;
+  }
+
+  .author__urls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25em 1.25em;
+    position: static;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    z-index: auto;
+
+    &:before,
+    &:after {
+      display: none;
+    }
+
+    a {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Home sections
+   ========================================================================== */
+
+.home-section {
+  /* the masthead is fixed, so leave room when jumping to a section */
+  scroll-margin-top: calc(#{$masthead-height} + 1.5em);
+  padding-bottom: 1.25em;
+  margin-bottom: 1.25em;
+  border-bottom: 1px solid $section-rule;
+
+  &:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  > h2 {
+    margin-top: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+    font-size: $type-size-3;
+  }
+}
+
+/* About is the only free-text section: smaller, tighter text so the first project card
+   starts within the first screen */
+#about.home-section p {
+  margin-bottom: 0.7em;
+  font-size: 0.9em;
+  line-height: 1.45;
+}
+
+/* Cards
+   ========================================================================== */
+
+.card {
+  background: $card-bg;
+  border: 1px solid $card-border;
+  border-radius: 8px;
+  padding: 1.25em 1.5em;
+
+  h2,
+  h3 {
+    margin-top: 0;
+    border-bottom: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.card-list {
+  display: grid;
+  gap: 1em;
+}
+
+.card__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25em 1em;
+
+  /* keep the period at the top right; a long title wraps inside its own column */
+  @include breakpoint($medium) {
+    flex-wrap: nowrap;
+
+    .card__title { flex: 1 1 auto; min-width: 0; }
+    .card__period { flex: 0 0 auto; white-space: nowrap; }
+  }
+}
+
+.card__title {
+  margin: 0;
+  font-size: $type-size-4;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* .card raises the context above the theme's `.page__content p { font-size: 1em }` */
+.card__period,
+.card .card__context {
+  color: $muted-text;
+  font-size: $type-size-6;
+}
+
+.card__context {
+  margin: 0.25em 0 0;
+}
+
+.card__summary {
+  margin: 0.75em 0;
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: 1em;
+
+  .btn {
+    margin: 0;
+    padding: 0.45em 1em;
+    border: 1px solid $accent;
+    border-radius: 6px;
+    background: $accent;
+    color: #fff;
+    font-size: $type-size-6;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      background: $darker-primary-color;
+      border-color: $darker-primary-color;
+    }
+  }
+
+  .btn--inverse {
+    background: transparent;
+    color: $accent;
+
+    &:hover {
+      background: $accent-soft;
+      color: $darker-primary-color;
+    }
+  }
+}
+
+/* Experience
+   ========================================================================== */
+
+.experience-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+
+  @include breakpoint($medium) {
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 1.5em;
+  }
+}
+
+.experience-card__meta {
+  font-size: $type-size-6;
+  color: $muted-text;
+
+  p {
+    margin: 0 0 0.2em;
+  }
+
+  @include breakpoint($medium) {
+    padding-right: 1.5em;
+    border-right: 1px solid $card-border;
+  }
+}
+
+.experience-card__org {
+  color: $text;
+  font-weight: 700;
+}
+
+.experience-card__body {
+  h3 {
+    margin: 0 0 0.5em;
+    font-size: $type-size-4;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.2em;
+  }
+
+  li {
+    margin-bottom: 0.35em;
+  }
+}
+
+/* Courses
+   ========================================================================== */
+
+.course-list {
+  display: grid;
+  gap: 0.5em;
+}
+
+.course-item {
+  padding: 0.6em 1em;
+  border: 1px solid $card-border;
+  border-radius: 6px;
+  background: $card-bg;
+  font-size: $type-size-6;
+  font-weight: 600;
+
+  summary {
+    cursor: pointer;
+    color: $accent;
+  }
+
+  p {
+    margin: 0.5em 0 0;
+    font-weight: 400;
+  }
+}
+
+/* Project detail page (no sidebar)
+   ========================================================================== */
+
+.project-detail {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.project-page {
+  display: grid;
+  gap: 1.25em;
+
+  /* #main already pads the sides on phones, matching the home page */
+  @include breakpoint($medium) {
+    padding: 0 1em;
+  }
+
+  /* grid items default to min-width: auto; let wide diagrams scroll inside their card */
+  > * {
+    min-width: 0;
+  }
+
+  h2 {
+    margin-top: 0;
+    border-bottom: 0;
+    font-size: $type-size-4;
+  }
+}
+
+.project-hero__eyebrow {
+  margin: 0 0 0.25em;
+  color: $accent;
+  font-size: $type-size-6;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-hero__title {
+  margin: 0;
+  font-size: $type-size-2;
+  line-height: 1.2;
+}
+
+.project-hero__meta {
+  margin: 0.4em 0 0;
+  color: $muted-text;
+  font-size: $type-size-6;
+}
+
+.project-hero__summary {
+  margin: 0.75em 0 0;
+}
+
+.project-role h2 {
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid $section-rule;
+}
+
+/* Project body: STAR sections, diagrams, screenshots
+   ========================================================================== */
+
+.project-body {
+  h2 {
+    margin-top: 1.6em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid $section-rule;
+  }
+
+  > h2:first-of-type {
+    margin-top: 0;
+  }
+
+  /* the theme sets tables at $type-size-6, well below the body text */
+  table {
+    font-size: 0.875em;
+  }
+
+  /* the theme paints thead with the dark border color but leaves the text dark */
+  thead th {
+    color: #fff;
+  }
+
+  /* Mermaid diagrams render into the <pre> that held their source */
+  pre:has(> code.language-mermaid) {
+    padding: 1em;
+    background: #fff;
+    border: 1px solid $card-border;
+    border-radius: 8px;
+    text-align: center;
+
+    /* the diagram renders inside <code>; let it use the full width */
+    > code {
+      display: block;
+      width: 100%;
+      background: transparent;
+    }
+
+    /* on phones keep the text readable and scroll sideways instead of shrinking */
+    @media screen and (max-width: #{$medium - 1px}) {
+      overflow-x: auto;
+      text-align: left;
+
+      svg {
+        min-width: 720px;
+      }
+    }
+  }
+}
+
+/* notes, sources, and credits; .project-body raises it above the theme's paragraph size */
+.project-body .project-note {
+  color: $muted-text;
+  font-size: $type-size-6;
+}
+
+/* one screenshot per row, so the English labels on them stay readable */
+.project-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75em;
+
+  figure {
+    margin: 0;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    border: 1px solid $card-border;
+    border-radius: 6px;
+  }
+
+  figcaption {
+    margin-top: 0.4em;
+    color: $muted-text;
+    font-size: $type-size-6;
+  }
+}
+
+/* AI notes page: a Windows Terminal (PowerShell) style transcript, dark in both site themes
+   ========================================================================== */
+
+/* the transcript is its own card, so the body card around it steps aside */
+.project-body.project-body--bare {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Campbell, the Windows Terminal default color scheme */
+$term-bg          : #0c0c0c;
+$term-chrome      : #202020;
+$term-text        : #cccccc;
+$term-bright      : #f2f2f2;
+$term-gray        : #8a8a8a;
+$term-green       : #16c60c;
+$term-blue        : #3a96dd;
+
+.terminal {
+  overflow: hidden;
+  border: 1px solid #2d2d2d;
+  border-radius: 8px;
+  background: $term-bg;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  color: $term-text;
+  font-family: "Cascadia Mono", "Cascadia Code", Consolas, ui-monospace, Menlo, "Liberation Mono", monospace;
+}
+
+/* title bar: one tab, the new-tab buttons, and the window controls */
+.terminal__bar {
+  display: flex;
+  align-items: stretch;
+  height: 38px;
+  padding-left: 8px;
+  background: $term-chrome;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+.terminal__tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  max-width: 230px;
+  margin-top: 6px;
+  padding: 0 10px;
+  border-radius: 6px 6px 0 0;
+  background: $term-bg;
+  color: $term-bright;
+  font-size: 12px;
+}
+
+.terminal__icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 13px;
+  border-radius: 2px;
+  background: #012456;
+  color: #ffffff;
+  font: 700 8px/1 Consolas, monospace;
+}
+
+.terminal__tabtitle {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.terminal__tabclose {
+  flex: none;
+  margin-left: 10px;
+  color: $term-gray;
+  font-size: 13px;
+}
+
+.terminal__new {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  color: #b5b5b5;
+  font-size: 16px;
+}
+
+/* the dropdown chevron next to the new-tab button */
+.terminal__new--menu::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border-right: 1px solid #b5b5b5;
+  border-bottom: 1px solid #b5b5b5;
+  transform: rotate(45deg);
+}
+
+.terminal__controls {
+  display: flex;
+  margin-left: auto;
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    color: #d6d6d6;
+    font-size: 17px;
+  }
+}
+
+.terminal__min::before {
+  content: "";
+  width: 10px;
+  border-top: 1px solid #d6d6d6;
+}
+
+.terminal__max::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border: 1px solid #d6d6d6;
+  border-radius: 1px;
+}
+
+@media screen and (max-width: #{$medium - 1px}) {
+  .terminal__new--menu {
+    display: none;
+  }
+
+  .terminal__controls span {
+    width: 32px;
+  }
+}
+
+.terminal__body {
+  padding: 1.1em 1.25em 1.3em;
+  font-size: 0.85em;
+  line-height: 1.65;
+
+  @media screen and (max-width: #{$medium - 1px}) {
+    padding: 0.9em 0.95em 1.1em;
+    font-size: 0.8em;
+  }
+}
+
+.project-body .terminal p {
+  margin: 0 0 0.7em;
+}
+
+/* .terminal in these selectors outranks the general .terminal p margin above and the theme's .page__content p */
+.project-body .terminal .terminal__ps {
+  margin-bottom: 1em;
+  color: $term-text;
+}
+
+/* hanging indent so wrapped lines sit under the text, not under the marker */
+.project-body .terminal__prompt,
+.project-body .terminal__line {
+  padding-left: 1.5em;
+  text-indent: -1.5em;
+}
+
+.project-body .terminal .terminal__prompt {
+  margin-bottom: 1.2em;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  color: $term-bright;
+}
+
+.terminal__mark {
+  display: inline-block;
+  width: 1.5em;
+  text-indent: 0;
+  color: $term-blue;
+}
+
+.terminal__dot {
+  display: inline-block;
+  width: 1.5em;
+  text-indent: 0;
+  color: $term-bright;
+}
+
+.terminal__dot--tool {
+  color: $term-green;
+}
+
+.terminal__step {
+  margin-bottom: 1em;
+}
+
+.project-body .terminal .terminal__out {
+  margin: 0;
+  padding-left: 2.7em;
+  text-indent: -1.2em;
+  color: $term-gray;
+}
+
+.terminal__elbow {
+  display: inline-block;
+  width: 1.2em;
+  text-indent: 0;
+}
+
+.terminal__text {
+  padding-left: 1.5em;
+
+  ul {
+    margin: 0.2em 0 0.9em;
+    padding-left: 1.1em;
+  }
+
+  li {
+    margin-bottom: 0.7em;
+  }
+
+  li::marker {
+    color: $term-gray;
+  }
+
+  /* second level: the details under each point, closer together */
+  ul ul {
+    margin: 0.3em 0 0;
+    padding-left: 1.2em;
+    list-style: "- ";
+  }
+
+  ul ul li {
+    margin-bottom: 0.25em;
+  }
+
+  strong {
+    color: $term-bright;
+  }
+
+  a {
+    color: $term-blue;
+  }
+}
+
+/* section labels inside the reply */
+.project-body .terminal .terminal__h {
+  margin: 1.3em 0 0.5em;
+  color: $term-bright;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.project-body .terminal-caption {
+  margin: 0.75em 0 0;
+  color: $muted-text;
+  font-size: $type-size-6;
+}
+
+/* About: a short terminal card that opens the AI notes page */
+.terminal-teaser {
+  /* the masthead is fixed; "Back to Home" on the AI page lands here */
+  scroll-margin-top: calc(#{$masthead-height} + 1.5em);
+  margin: 1em 0 0;
+
+  a.terminal {
+    display: block;
+    color: $term-text;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover,
+    &:focus-visible {
+      color: $term-text;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+      transform: translateY(-2px);
+    }
+
+    &:visited {
+      color: $term-text;
+    }
+  }
+
+  .terminal__body {
+    display: block;
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+    font-size: 0.8em;
+  }
+
+  .terminal__ps,
+  .terminal__prompt,
+  .terminal__more {
+    display: block;
+    margin: 0 0 0.5em;
+    padding-left: 1.5em;
+    text-indent: -1.5em;
+  }
+
+  .terminal__ps {
+    padding-left: 0;
+    text-indent: 0;
+  }
+
+  .terminal__prompt {
+    color: $term-bright;
+  }
+
+  /* styled like a collapsed Claude Code reply: label plus a gray hint */
+  .terminal__more {
+    margin-bottom: 0;
+  }
+
+  .terminal__cta {
+    color: $term-blue;
+  }
+
+  .terminal__hint {
+    color: $term-gray;
+  }
+
+  a.terminal:hover .terminal__cta,
+  a.terminal:focus-visible .terminal__cta {
+    text-decoration: underline;
+  }
+}
+
+/* block cursor after the link text, like a waiting prompt */
+.terminal__cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 0.35em;
+  vertical-align: text-bottom;
+  background: $term-text;
+  animation: terminal-blink 1.1s steps(1) infinite;
+}
+
+@keyframes terminal-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal__cursor {
+    animation: none;
+  }
+
+  .terminal-teaser a.terminal {
+    transition: none;
+  }
+}

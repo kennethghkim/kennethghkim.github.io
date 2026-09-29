@@ -1,0 +1,16 @@
+<section id="courses" class="home-section">
+  <h2>Courses</h2>
+  <div class="course-list">
+    {% for course in site.data.courses %}
+      {% capture label %}{{ course.code }}: {{ course.name }}{% if course.term %} ({{ course.term }}){% endif %}{% endcapture %}
+      {% if course.description %}
+        <details class="course-item">
+          <summary>{{ label }}</summary>
+          <p>{{ course.description }}</p>
+        </details>
+      {% else %}
+        <div class="course-item"><span>{{ label }}</span></div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>

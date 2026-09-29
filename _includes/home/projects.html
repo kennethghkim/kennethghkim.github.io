@@ -1,0 +1,21 @@
+{% include base_path %}
+<section id="projects" class="home-section">
+  <h2>Projects</h2>
+  <div class="card-list">
+    {% assign projects = site.projects | sort: "order" %}
+    {% for project in projects %}
+      <article class="card project-card">
+        <div class="card__head">
+          <h3 class="card__title"><a href="{{ base_path }}{{ project.url }}">{{ project.title }}</a></h3>
+          {% if project.period %}<span class="card__period">{{ project.period }}</span>{% endif %}
+        </div>
+        {% if project.context %}<p class="card__context">{{ project.context }}</p>{% endif %}
+        {% if project.summary %}<p class="card__summary">{{ project.summary }}</p>{% endif %}
+        <div class="card-actions">
+          <a class="btn" href="{{ base_path }}{{ project.url }}">View Details</a>
+          {% for link in project.links %}<a class="btn btn--inverse" href="{{ link.url }}">{{ link.label }}</a>{% endfor %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>

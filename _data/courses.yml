@@ -1,0 +1,28 @@
+# Courses shown on the home page.
+# Add a description to make a course row expandable.
+# Sorted newest term first (2026-09-26).
+
+- code: "FINA 3303"
+  name: "Investments"
+  term: "Fall '26"
+- code: "ACCT 2301"
+  name: "Profit Analysis for Managers and Advisors"
+  term: "Fall '26"
+- code: "DS 3500"
+  name: "Advanced Programming with Data"
+  term: "Fall '26"
+- code: "DS 3000"
+  name: "Mathematical Foundations of Artificial Intelligence"
+  term: "Fall '26"
+- code: "FINA 2201"
+  name: "Financial Management"
+  term: "Spring '26"
+- code: "MGSC 2301"
+  name: "Business Statistics"
+  term: "Spring '26"
+- code: "CS 3200"
+  name: "Introduction to Databases"
+  term: "Spring '26"
+- code: "ACCT 1201"
+  name: "Financial Accounting and Reporting"
+  term: "Fall '25"
